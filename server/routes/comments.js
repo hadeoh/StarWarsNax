@@ -27,6 +27,18 @@ router.post("/", async (req, res) => {
       if (data === 'comment error') {
         return res.status(400).json({ message: 'The length of comments cannot be more than 500', data: null });
       }
+
+      if (!episodeId) {
+        return res.status(400).json({ message: 'Episode id cannot be empty', data: null });
+      }
+
+      if (body.length === 0) {
+        return res.status(400).json({ message: 'Body of comment cannot be empty', data: null });
+      }
+
+      if (!ipAddress) {
+        return res.status(400).json({ message: 'ipAddress cannot be empty', data: null });
+      }
   
       res
         .status(200)
